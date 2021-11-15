@@ -1,5 +1,3 @@
-using System;
-
 namespace SalesWebMVC3._1.Models
 {
     public class ErrorViewModel

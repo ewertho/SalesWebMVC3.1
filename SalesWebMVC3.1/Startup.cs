@@ -1,14 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using SalesWebMVC3._1.Data;
 
 namespace SalesWebMVC3._1
@@ -28,15 +23,18 @@ namespace SalesWebMVC3._1
             services.AddControllersWithViews();
 
             services.AddDbContext<SalesWebMVC3_1Context>(options =>
-                    options.UseMySql(Configuration.GetConnectionString("SalesWebMVC3_1Context"), builder=> builder.MigrationsAssembly("SalesWebMVC3.1")));
+                    options.UseMySql(Configuration.GetConnectionString("SalesWebMVC3_1Context"), builder => builder.MigrationsAssembly("SalesWebMVC3.1")));
+
+            services.AddScoped<SeedingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
             else
             {
