@@ -14,6 +14,8 @@ namespace SalesWebMVC3._1.Data
         {
         }
 
-        public DbSet<SalesWebMVC3._1.Models.Departament> Departament { get; set; }
+        public DbSet<Departament> Departament { get; set; }
+        public DbSet<Seller> Seller { get; set; }
+        public DbSet<SalesRecord> SalesRecord { get; set; }
     }
 }
