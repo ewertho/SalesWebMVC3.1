@@ -11,8 +11,9 @@ namespace SalesWebMVC3._1.Models
         public string Email { get; set; }
         public double BaseSalary { get; set; }
         public DateTime BirthDate { get; set; }
-
         public Departament Departament { get; set; }
+        public int DepartamentId { get; set; }
+
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
         public Seller()
