@@ -7,7 +7,7 @@ namespace SalesWebMVC3._1.Data
 {
     public class SeedingService
     {
-        private SalesWebMVC3_1Context _context;
+        private readonly SalesWebMVC3_1Context _context;
 
         public SeedingService(SalesWebMVC3_1Context context)
         {
